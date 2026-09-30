@@ -1,0 +1,44 @@
+---
+title: 资料分类台账｜字段规范
+description: 内部知识库 · 经营与管理
+public: false
+noindex: true
+---
+
+> 内部资料｜仅供获准团队成员使用。
+
+# 资料分类台账｜字段规范
+
+## 目的
+
+台账记录“资料建议关联到哪里”，不改变原始资料的物理路径、内容、权限或现行性。每个主枝单独产生待复核清单；确认后才写入 MOC、素材标签卡或来源索引。
+
+## 统一字段
+
+| 字段 | 含义 | 填写规则 |
+|---|---|---|
+| `source_path` | 原始文件或既有资料卡路径 | 必填；原件路径不改写。 |
+| `knowledge_primary` | 七大主枝之一 | 必填；一项只设一个主枝。 |
+| `business_stage` | 业务闭环阶段 | 可多选：医学策略 / 医疗交付与护理 / 患者全程管理 / 运营与质控 / 组织治理与培训 / 增长与合作 / 支持。 |
+| `professional_topic` | 专业主题 | 可多选；医学资料写明主题但不生成医学结论。 |
+| `responsible_function` | 责任部门或角色 | 可多选；用于部门职责导航。 |
+| `material_role` | 资料角色 | `source` / `standard` / `playbook` / `meeting` / `training` / `data` / `history-source` / `support`。 |
+| `confidentiality` | 保密级别 | `public` / `internal` / `confidential` / `restricted`；未知不降低等级。 |
+| `evidence_level` | 证据或来源级别 | `guideline` / `review` / `study` / `expert-opinion` / `internal-analysis` / `observation` / `TBD`。 |
+| `classification_confidence` | 分类置信度 | 0–1；低于 0.85 不作正式关联。 |
+| `review_status` | 复核状态 | `pending` / `approved` / `needs-medical-review` / `needs-owner-review` / `excluded`。 |
+| `review_notes` | 待核实项与边界 | 不写入患者身份或不必要病例细节。 |
+
+## 主枝复核流程
+
+1. 逐份读取可读资料，保留“事实 / 来源 / 推断 / 待核实”的边界。
+2. 形成主枝待复核清单；每条给出建议节点、理由和置信度。
+3. 由业务或医学责任人确认后，才把资料卡链接到主枝 MOC 与三视角入口。
+4. 将获准的关联操作写入 来源保留本地；不移动、不删除原件。
+
+## 复核输出格式
+
+| source_path | knowledge_primary | professional_topic | responsible_function | material_role | confidentiality | evidence_level | confidence | review_status | review_notes |
+|---|---|---|---|---|---|---|---:|---|---|
+
+> 历史会议和旧项目的 `material_role` 使用 `history-source`；不作为现行规范或待办依据。
